@@ -4,7 +4,8 @@
       <b-col class="tuOro">
         <h2>
           <img v-bind:src="require('../assets/images/chest.svg')" alt="baúl" width="60" />
-          <span class="contador">{{ cantidadOros }}</span>
+          <span v-if=" cantidadOros < 0 " class="contador" :style="{ color: colorRojo }" >{{ cantidadOros }}</span>
+          <span v-else class="contador" :style="{ color: colorNegro }" >{{ cantidadOros }}</span>
         </h2>
       </b-col>
     </b-row>
@@ -15,14 +16,25 @@
 export default {
   name: "ContadorOro",
   props: {
-    cantidadOros: Number
+    cantidadOros: Number,
   },
-  
+  data() {
+    return {
+      colorRojo: 'red',
+      colorNegro: 'black',
+    }
+  },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.rojo {
+  color: red;
+}
+.negro {
+  color: black;
+}
 .contador {
   color: black;
   border: 1px solid white;

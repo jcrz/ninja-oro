@@ -4,28 +4,40 @@
       <b-col text="left align" cols="12">
         <h6>Historial</h6>
       </b-col>
-      <b-col cols="12">
-        <b-form-textarea
-          id="textarea"
-          v-model="actividades"
-          placeholder="Esperando actividad..."
-          rows="6"
-        ></b-form-textarea>
+      <b-col cols="12" class="contenedor">
+        <ul>
+          <li v-for="(actividad, i) in actividades" :key="i" :class="{rojo: actividad.estado === 'pierde', verde: actividad.estado === 'gana'}">{{ actividad.descripcion }}</li>
+        </ul>
       </b-col>
     </b-row>
   </div>
 </template>
 
 <script>
+
 export default {
   name: "Actividad",
   props: {
-      actividades: String
+      actividades: Array
   }
 };
 </script>
 
 <style scoped>
+.contenedor {
+  background-color: white;
+  border-radius: 12px;
+  min-height: 150px;
+}
+.rojo {
+  color: red;
+}
+.verde {
+  color: green;
+}
+li {
+  list-style: none;
+}
 h6 {
   color: white;
 }

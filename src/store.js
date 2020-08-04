@@ -1,7 +1,7 @@
 export default {
     state: {
         cantidadOros: 1,
-        actividades: '',
+        actividades: [],
     },
     actualizarOros(casilla,arreglo){
       let min = arreglo[0];
@@ -13,18 +13,27 @@ export default {
           let operacionAzar = Math.floor(Math.random() * 2);
           if (operacionAzar) {
             this.state.cantidadOros += numInt;
-            this.state.actividades += (`Ganaste ${numInt} oros en el ${casilla}!! (${fecha}) \n`);
+            this.state.actividades.push({
+              descripcion: `Ganaste ${numInt} oros en el ${casilla}!! (${fecha}) \n`,
+              estado: 'gana'
+            })
           } else {
             this.state.cantidadOros -= numInt;
-            this.state.actividades += (`Perdiste ${numInt} oros en el ${casilla} :(  (${fecha}) \n`);
+            this.state.actividades.push({
+              descripcion: `Perdiste ${numInt} oros en el ${casilla} :(  (${fecha}) \n`,
+              estado: 'pierde'
+            })
           }
       } else {
         this.state.cantidadOros += numInt;
-        this.state.actividades += (`Encontraste ${numInt} oros en la ${casilla}!  (${fecha}) \n`);
+        this.state.actividades.push({
+          descripcion: `Encontraste ${numInt} oros en la ${casilla}!  (${fecha}) \n`,
+          estado: 'gana'
+        })
       }
     },
     resetear(){
       this.state.cantidadOros = 0;
-      this.state.actividades = '';
+      this.state.actividades = [];
     }
 }
