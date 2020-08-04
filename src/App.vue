@@ -18,6 +18,7 @@
       </b-row>
     </div>
     <Actividad :actividades="actividades" />
+    <Reset />
   </div>
 </template>
 
@@ -25,6 +26,7 @@
 import ContadorOro from "./components/ContadorOro";
 import Casilla from "./components/Casilla";
 import Actividad from "./components/Actividad";
+import Reset from './components/Reset';
 import store from '@/store'
 
 export default {
@@ -32,11 +34,13 @@ export default {
   components: {
     ContadorOro,
     Casilla,
-    Actividad
+    Actividad,
+    Reset
   },
   data: function(){
     return store.state;
-  }
+  },
+  
 };
 </script>
 

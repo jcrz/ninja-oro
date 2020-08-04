@@ -23,4 +23,8 @@ export default {
         this.state.actividades += (`Encontraste ${numInt} oros en la ${casilla}!  (${fecha}) \n`);
       }
     },
+    resetear(){
+      this.state.cantidadOros = 0;
+      this.state.actividades = '';
+    }
 }
